@@ -1,0 +1,48 @@
+scalar NonNegativeFloat
+
+type TransactionListResponse{
+    id: Int,
+    transactionalCode: String,
+    name: String,
+    email: String,
+    productName: String,
+    quantity: Int
+    totalPrice: NonNegativeFloat,
+    status: String
+}
+
+type TransactionResponse{
+    id: Int,
+    transactionalCode: String,
+    name: String,
+    email: String,
+    productName: String,
+    quantity: Int,
+    price: Int,
+    totalPrice: NonNegativeFloat,
+    status: String
+}
+
+input TransactionRequest{
+    userId: Int,
+    productName: String,
+    quantity: Int,
+    price: Int,
+    totalPrice: NonNegativeFloat,
+    status: String,
+    channel: String,
+    userIp: String,
+    deviceName: String,
+    location: String
+}
+
+extend type Query{
+    transactions: [TransactionListResponse]
+    transactionById(id: Int): TransactionResponse
+}
+
+extend type Mutation {
+    createTransaction(request: TransactionRequest): TransactionResponse
+    updateTransaction(id: Int, request: TransactionRequest): TransactionResponse
+    deleteTransaction(id: Int): String
+}

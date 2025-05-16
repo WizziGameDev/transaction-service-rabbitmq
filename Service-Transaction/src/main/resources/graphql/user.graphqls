@@ -1,0 +1,22 @@
+input UserRequest {
+    name: String,
+    email: String,
+    password: String
+}
+
+type UserResponse {
+    id: Int,
+    name: String,
+    email: String
+}
+
+type Query {
+    users: [UserResponse]
+    userById(id: Int): UserResponse
+}
+
+type Mutation {
+    createUser(request: UserRequest): UserResponse,
+    updateUser(id: Int, request: UserRequest): UserResponse,
+    deleteUser(id: Int): String
+}
