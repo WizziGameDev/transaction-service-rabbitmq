@@ -1,1 +1,1 @@
-# transaction-service-rabbitmq
+# Transaction Service RabbitMQ
